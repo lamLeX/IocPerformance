@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { GridModule } from '@syncfusion/ej2-ng-grids/src/index';
 
 @NgModule({
   imports: [
-    CommonModule
   ],
+  exports: [GridModule],
   declarations: []
 })
 export class SyncFusionModule { }

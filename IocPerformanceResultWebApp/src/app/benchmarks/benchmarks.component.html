@@ -1,0 +1,22 @@
+<p>
+  benchmarks works!
+</p>
+
+<!--<div>{{benchmarkString}}</div>-->
+
+<div class="control-section">
+  <ej-grid [datasource]="data" allowpaging="true" height="320" [groupsettings]="groupOptions" [allowgrouping]="true" allowsorting="true">
+    <e-columns>
+      <e-column width="180" field="Inventor" headertext="Inventor Name"></e-column>
+      <e-column width="220" field="NumberofPatentFamilies" textalign="right" headertext="Number of Patent Families"></e-column>
+      <e-column width="140" field="Country" headertext="Country"></e-column>
+      <e-column width="120" field="Active"></e-column>
+      <e-column width="200" field="Mainfieldsofinvention" headertext="Main fields of invention"></e-column>
+    </e-columns>
+  </ej-grid>
+  <div style="margin-top: 10px; text-align: right">Source:
+    <a href="https://en.wikipedia.org/wiki/List_of_prolific_inventors" target="_blank">Wikipedia: List of Prolific inventors</a>
+  </div>
+
+
+</div>
