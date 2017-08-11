@@ -4,14 +4,26 @@
 
 <!--<div>{{benchmarkString}}</div>-->
 
-<div class="control-section">
-  <ej-grid [datasource]="data" allowpaging="true" height="320" [groupsettings]="groupOptions" [allowgrouping]="true" allowsorting="true">
+<!-- <div class="control-section">
+  <ej-grid [datasource]="benchmarks" allowpaging="true" height="320" [groupsettings]="groupOptions" [allowgrouping]="true"
+    allowsorting="true">
     <e-columns>
-      <e-column width="180" field="Inventor" headertext="Inventor Name"></e-column>
-      <e-column width="220" field="NumberofPatentFamilies" textalign="right" headertext="Number of Patent Families"></e-column>
-      <e-column width="140" field="Country" headertext="Country"></e-column>
-      <e-column width="120" field="Active"></e-column>
-      <e-column width="200" field="Mainfieldsofinvention" headertext="Main fields of invention"></e-column>
+      <e-column width="180" field="BenchmarkInfo" headertext="Name"></e-column>
+      <e-column width="220" field="ContainerInfo" textalign="right" headertext="IoC Name"></e-column>
+      <e-column width="140" field="SingleThreadedResult" headertext="Single thread"></e-column>
+      <e-column width="120" field="MultiThreadedResult" headertext="Multi thread"></e-column>
+    </e-columns>
+  </ej-grid>
+</div> -->
+
+<div class="control-section">
+  <ej-grid height="320" [datasource]="data" [groupsettings]="groupOptions" [allowgrouping]="true" allowsorting="true" allowpaging="true">
+    <e-columns>
+      <e-column field="Inventor" width="180" headertext="Inventor Name"></e-column>
+      <e-column field="NumberofPatentFamilies" width="220" textalign="right" headertext="Number of Patent Families"></e-column>
+      <e-column field="Country" width="140" headertext="Country"></e-column>
+      <e-column field="Active" width="120"></e-column>
+      <e-column field="Mainfieldsofinvention" width="200" headertext="Main fields of invention"></e-column>
     </e-columns>
   </ej-grid>
   <div style="margin-top: 10px; text-align: right">Source:
