@@ -4,31 +4,29 @@
 
 <!--<div>{{benchmarkString}}</div>-->
 
-<!-- <div class="control-section">
-  <ej-grid [datasource]="benchmarks" allowpaging="true" height="320" [groupsettings]="groupOptions" [allowgrouping]="true"
-    allowsorting="true">
+<div class="control-section">
+  <ej-grid #grid [dataSource]="benchmarks" allowPaging="true" height="320" [groupSettings]="groupOptions" [allowGrouping]="true"
+    allowSorting="true">
     <e-columns>
-      <e-column width="180" field="BenchmarkInfo" headertext="Name"></e-column>
-      <e-column width="220" field="ContainerInfo" textalign="right" headertext="IoC Name"></e-column>
-      <e-column width="140" field="SingleThreadedResult" headertext="Single thread"></e-column>
-      <e-column width="120" field="MultiThreadedResult" headertext="Multi thread"></e-column>
+      <e-column width="220" textalign="right" headerText="IoC">
+        <ng-template let-data #template>
+          <a [href]="data.containerInfo.url">{{data.containerInfo.name}}</a>
+        </ng-template>
+      </e-column>
+      <e-column width="180" field="BenchmarkInfo.Name" headerText="Name"></e-column>
+      <e-column width="140" field="SingleThreadedResult.Time" headerText="Single thread"></e-column>
+      <e-column width="120" field="MultiThreadedResult.Time" headerText="Multi thread"></e-column>
     </e-columns>
   </ej-grid>
-</div> -->
+</div>
 
 <div class="control-section">
-  <ej-grid height="320" [datasource]="data" [groupsettings]="groupOptions" [allowgrouping]="true" allowsorting="true" allowpaging="true">
+  <ej-grid height="320" [dataSource]="data" [groupSettings]="groupOptions" [allowGrouping]="true" allowSorting="true" allowPaging="true">
     <e-columns>
-      <e-column field="Inventor" width="180" headertext="Inventor Name"></e-column>
-      <e-column field="NumberofPatentFamilies" width="220" textalign="right" headertext="Number of Patent Families"></e-column>
-      <e-column field="Country" width="140" headertext="Country"></e-column>
-      <e-column field="Active" width="120"></e-column>
-      <e-column field="Mainfieldsofinvention" width="200" headertext="Main fields of invention"></e-column>
+      <e-column field='OrderID' headerText='Order ID' textAlign='right' width=120></e-column>
+      <e-column field='CustomerID' headerText='Customer ID' width=150></e-column>
+      <e-column field='ShipCity' headerText='Ship City' width=150></e-column>
+      <e-column field='ShipName' headerText='Ship Name' width=150></e-column>
     </e-columns>
   </ej-grid>
-  <div style="margin-top: 10px; text-align: right">Source:
-    <a href="https://en.wikipedia.org/wiki/List_of_prolific_inventors" target="_blank">Wikipedia: List of Prolific inventors</a>
-  </div>
-
-
 </div>

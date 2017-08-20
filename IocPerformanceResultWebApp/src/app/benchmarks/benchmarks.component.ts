@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupSettingsModel } from "@syncfusion/ej2-ng-grids/src";
 
 import { BenchmarkResult } from "./shared/benchmark-result.model";
 import { BenchmarkService } from "./benchmark.service";
@@ -12,7 +13,7 @@ import { data } from "./shared/datasource";
 })
 export class BenchmarksComponent implements OnInit {
   benchmarks: BenchmarkResult[];
-  public groupOptions: Object
+  public groupOptions: GroupSettingsModel;
   public data: Object[];
 
   constructor(private benchmarkSerice: BenchmarkService) { }
@@ -23,7 +24,7 @@ export class BenchmarksComponent implements OnInit {
     this.benchmarkSerice.getBenchmarkResults().subscribe((data) => {
       this.benchmarks = data;
     });
-    this.groupOptions = { showGroupedColumn: false };
+    this.groupOptions = { showGroupedColumn: false, /*columns: ['ContainerInfo.Name'] */ };
   }
 
   public get benchmarkString(): string {

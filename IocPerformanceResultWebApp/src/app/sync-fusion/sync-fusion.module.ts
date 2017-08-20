@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { GridModule, GridComponent, PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-ng-grids/src/grid/index';
+import { GridAllModule } from '@syncfusion/ej2-ng-grids/src';
 
 @NgModule({
   imports: [],
-  exports: [GridModule],
+  exports: [GridAllModule],
   declarations: [],
-  providers: [PageService, SortService, FilterService, GroupService]
 })
 export class SyncFusionModule { }

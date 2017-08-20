@@ -6,18 +6,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BenchmarksModule } from "./benchmarks/benchmarks.module";
 import { MaterialDesignModule } from "./material-design/material-design.module";
-import { SyncFusionModule } from "./sync-fusion/sync-fusion.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BenchmarksModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialDesignModule,
-    SyncFusionModule
+    BenchmarksModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

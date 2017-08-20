@@ -6,4 +6,5 @@ export class BenchmarkResult {
     benchmarkInfo: BenchmarkInfo;
     containerInfo: ContainerAdapterInfo;
     singleThreadedResult: Measurement;
+    multiThreadedResult: Measurement;
 }
