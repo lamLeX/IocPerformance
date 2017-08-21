@@ -1,6 +1,6 @@
 export class Measurement {
-    time?: Date;
-    extrapolated: boolean;
-    error: string;
-    successful: boolean;
+    Time?: Date;
+    ExtraPolated: boolean;
+    Error: string;
+    Successful: boolean;
 }

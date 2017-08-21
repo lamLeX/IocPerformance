@@ -1,5 +1,5 @@
 export class ContainerAdapterInfo {
-    name: string;
-    url: string;
-    version: string;
+    Name: string;
+    Url: string;
+    Version: string;
 }

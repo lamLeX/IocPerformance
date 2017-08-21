@@ -1,10 +1,10 @@
 import { ContainerAdapterInfo } from "./container-adapter-info.model";
-import { BenchmarkInfo } from "./benchmark-info.model";
+import { BenchmarkInformation } from "./benchmark-information.model";
 import { Measurement } from "./measurement.model";
 
 export class BenchmarkResult {
-    benchmarkInfo: BenchmarkInfo;
-    containerInfo: ContainerAdapterInfo;
-    singleThreadedResult: Measurement;
-    multiThreadedResult: Measurement;
+    BenchmarkInfo: BenchmarkInformation;
+    ContainerInfo: ContainerAdapterInfo;
+    SingleThreadedResult: Measurement;
+    MultiThreadedResult: Measurement;
 }
