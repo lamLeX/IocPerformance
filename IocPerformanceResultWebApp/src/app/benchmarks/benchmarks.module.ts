@@ -5,6 +5,8 @@ import { SyncFusionModule } from "../sync-fusion/sync-fusion.module";
 import { BenchmarksComponent } from "./benchmarks.component";
 import { BenchmarkService } from './benchmark.service';
 import { PrimeNgModule } from "../prime-ng/prime-ng.module";
+import { IocComponent } from './ioc/ioc.component';
+import { MeasurementComponent } from './measurement/measurement.component';
 
 @NgModule({
   imports: [
@@ -13,10 +15,12 @@ import { PrimeNgModule } from "../prime-ng/prime-ng.module";
     PrimeNgModule
   ],
   exports: [
-    BenchmarksComponent
+    BenchmarksComponent,
   ],
   declarations: [
-    BenchmarksComponent
+    BenchmarksComponent,
+    IocComponent,
+    MeasurementComponent,
   ],
   providers: [
     BenchmarkService]

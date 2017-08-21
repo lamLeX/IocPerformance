@@ -1,0 +1,10 @@
+<ng-container *ngIf="measurement.Successful; then success else failed"></ng-container>
+
+<ng-template #success>{{measurement.Time}}</ng-template>
+
+<ng-template #failed>
+  <ng-container *ngIf="measurement.ExtraPolated; then extpol else error"></ng-container>
+  <ng-template #extpol>{{measurement.Time}}*</ng-template>
+  <ng-template #error>Error:{{measurement.Error}}</ng-template>
+  <!-- Failed -->
+</ng-template>

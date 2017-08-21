@@ -1,0 +1,5 @@
+<div *ngIf="container.Url==''; else iocHasDetail">None</div>
+<ng-template #iocHasDetail>
+  <a [href]="container.Url">{{container.Name}}</a>
+  <span *ngIf="container.Version"> ({{container.Version}})</span>
+</ng-template>
