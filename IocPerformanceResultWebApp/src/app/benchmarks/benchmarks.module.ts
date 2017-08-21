@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { SyncFusionModule } from "../sync-fusion/sync-fusion.module";
 import { BenchmarksComponent } from "./benchmarks.component";
 import { BenchmarkService } from './benchmark.service';
+import { PrimeNgModule } from "../prime-ng/prime-ng.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    SyncFusionModule
+    SyncFusionModule,
+    PrimeNgModule
   ],
   exports: [
     BenchmarksComponent
