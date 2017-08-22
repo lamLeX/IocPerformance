@@ -2,7 +2,9 @@ import { BenchmarkInformation } from "./benchmark-information.model";
 import { Measurement } from "./measurement.model";
 
 export class Benchmark {
-    BenchmarkInfo: BenchmarkInformation;
-    SingleThreadedResult: Measurement;
-    MultiThreadedResult: Measurement;
+    benchInfo: BenchmarkInformation;
+    singleThreadedResult: Measurement;
+    maxTimeInSingleThread: number;
+    multiThreadedResult: Measurement;
+    maxTimeInMultiThread: number;
 }
