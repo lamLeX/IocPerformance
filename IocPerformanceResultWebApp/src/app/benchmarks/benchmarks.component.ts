@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupSettingsModel } from "@syncfusion/ej2-ng-grids/src";
-import { SelectItem } from "primeng/primeng";
+import { SelectItem, DataTable } from "primeng/primeng";
 
 import { BenchmarkResult } from "./shared/benchmark-result.model";
 import { BenchmarkService } from "./benchmark.service";
@@ -24,6 +24,8 @@ export class BenchmarksComponent implements OnInit {
   iocFilters: SelectItem[];
 
   benchmarkGroups: BenchmarkDisplay[];
+  maxSingleThread: number;
+  maxMultiThread: number;
 
   // public groupOptions: GroupSettingsModel;
   // public data: Object[];
@@ -38,13 +40,30 @@ export class BenchmarksComponent implements OnInit {
 
       this.iocAdapters = this.getIocAdapters(this.benchmarks);
       this.benchmarkGroups = this.createBenchmarkDisplayFromListOfContainers(this.iocAdapters);
-
+      let result = this.getMaxTime(this.benchmarks);
+      this.maxSingleThread = result.single;
+      this.maxMultiThread = result.multi;
+      //debugger;
     });
     // this.groupOptions = { showGroupedColumn: false, /*columns: ['ContainerInfo.Name'] */ };
   }
 
   public get benchmarkString(): string {
     return JSON.stringify(this.benchmarks);
+  }
+
+  private reset(dt: DataTable) {
+    dt.reset();
+  }
+
+  private dtOnSort(event) {
+    debugger;
+  }
+  private dtOnPage(event) {
+    debugger;
+  }
+  private dtOnFilter(event) {
+    debugger;
   }
 
   private getFeatures(b: BenchmarkResult[]): BenchmarkInformation[] {
@@ -75,6 +94,20 @@ export class BenchmarksComponent implements OnInit {
       result.push(new BenchmarkDisplay({ ContainerInfo: container }));
     });
     return result;
+  }
+
+  private getMaxTime(b: BenchmarkResult[]): { single: number, multi: number } {
+    let single = b.filter(r => r.SingleThreadedResult.Successful)
+      .map<number>(r => r.SingleThreadedResult.Time)
+      .reduce((prev, curr) => {
+        return (curr > prev) ? curr : prev;
+      });
+    let multi = b.filter(r => r.MultiThreadedResult.Successful)
+      .map<number>(r => r.MultiThreadedResult.Time)
+      .reduce((prev, curr) => {
+        return (curr > prev) ? curr : prev;
+      });
+    return { single: single, multi: multi };
   }
 
 }

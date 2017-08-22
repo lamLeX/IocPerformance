@@ -1,6 +1,10 @@
 <ng-container *ngIf="measurement.Successful; then success else failed"></ng-container>
 
-<ng-template #success>{{measurement.Time}}</ng-template>
+<ng-template #success>
+  <span class="element__chart" [ngStyle]="{'width.%':percent}"></span>
+  <span>{{measurement.Time}}</span>
+
+</ng-template>
 
 <ng-template #failed>
   <ng-container *ngIf="measurement.ExtraPolated; then extpol else error"></ng-container>

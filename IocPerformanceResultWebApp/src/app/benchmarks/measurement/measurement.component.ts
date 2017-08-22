@@ -8,10 +8,13 @@ import { Measurement } from "../shared/measurement.model";
 })
 export class MeasurementComponent implements OnInit {
   @Input() measurement: Measurement
+  @Input() maxTime: number
+  percent: number
 
   constructor() { }
 
   ngOnInit() {
+    this.percent = (this.measurement.Time / this.maxTime) * 100;
   }
 
 }

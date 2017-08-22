@@ -1,5 +1,5 @@
 export class Measurement {
-    Time?: Date;
+    Time?: number;
     ExtraPolated: boolean;
     Error: string;
     Successful: boolean;

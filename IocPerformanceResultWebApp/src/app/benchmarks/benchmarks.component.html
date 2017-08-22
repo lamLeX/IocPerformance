@@ -34,8 +34,10 @@
 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
   <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
   <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+  <!-- <button type="button" (click)="reset(dt)" label="Reset"></button> -->
 </div>
-<p-dataTable [value]="this.benchmarks" [rows]="50" [paginator]="true" paginatorPosition="both" [globalFilter]="gb" #dt>
+<p-dataTable (onSort)="dtOnSort($event)" (onFilter)="dtOnFilter($event)" (onPage)="dtOnPage($event)" [value]="this.benchmarks"
+  [rows]="50" [paginator]="true" paginatorPosition="both" [globalFilter]="gb" #dt>
   <p-column field="ContainerInfo.Name" header="IoC" sortField="ContainerInfo.Name">
     <ng-template pTemplate="body" let-ioc="rowData.ContainerInfo">
       <benchmark-ioc [container]="ioc"></benchmark-ioc>
@@ -50,12 +52,12 @@
   </p-column>
   <p-column field="SingleThreadedResult.Time" header="Single" sortable="true">
     <ng-template pTemplate="body" let-measurement="rowData.SingleThreadedResult">
-      <benchmark-measurement [measurement]="measurement"></benchmark-measurement>
+      <benchmark-measurement [measurement]="measurement" [maxTime]="this.maxSingleThread"></benchmark-measurement>
     </ng-template>
   </p-column>
   <p-column field="MultiThreadedResult.Time" header="Multi" sortable="true">
     <ng-template pTemplate="body" let-measurement="rowData.MultiThreadedResult">
-      <benchmark-measurement [measurement]="measurement"></benchmark-measurement>
+      <benchmark-measurement [measurement]="measurement" [maxTime]="this.maxMultiThread"></benchmark-measurement>
     </ng-template>
   </p-column>
 </p-dataTable>
