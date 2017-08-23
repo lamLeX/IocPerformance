@@ -32,13 +32,17 @@ export class BenchmarksComponent implements OnInit {
   // public groupOptions: GroupSettingsModel;
   // public data: Object[];
   testdata = [{
-    IOC: "A", benches: [{ testName: "CA", single: 12, multi: 22 },
+    IOC: "C", benches: [{ testName: "CA", single: 12, multi: 22 },
     { testName: "Va", single: 12, multi: 42 }]
   },
   {
-    IOC: "C", benches: [{ testName: "CA", single: 12, multi: 22 },
+    IOC: "A", benches: [{ testName: "CA", single: 12, multi: 22 },
     { testName: "Va", single: 12, multi: 42 }]
   }];
+  private testOrder() {
+    debugger;
+    this.testdata.sort((a, b) => { return a.IOC.charCodeAt(0) - b.IOC.charCodeAt(0) });
+  }
 
   constructor(private benchmarkSerice: BenchmarkService) { }
 
@@ -85,8 +89,15 @@ export class BenchmarksComponent implements OnInit {
     });
   }
 
-  private dtOnSort(event) {
-    debugger;
+  private dtOnSort(event, dt: DataTable) {
+    let [i, thread] = event.field.split(".");
+    dt.value.sort((a, b) => {
+      let index = parseInt(i);
+      let compare = (thread == "Single") ?
+        a.benchmarks[i].singleThreadedResult.Time - b.benchmarks[i].singleThreadedResult.Time :
+        a.benchmarks[i].multiThreadedResult.Time - b.benchmarks[i].multiThreadedResult.Time;
+      return event.order * compare;
+    });
   }
   private dtOnPage(event) {
     debugger;

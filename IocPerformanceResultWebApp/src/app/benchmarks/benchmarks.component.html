@@ -32,15 +32,18 @@
   <input #gb type="text" pInputText size="50" placeholder="Global Filter">
   <!-- <button type="button" (click)="reset(dt)" label="Reset"></button> -->
 </div>
+
 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
   <p-multiSelect [options]="this.benchmarkFilters" styleClass="ui-column-filter" (onChange)="onFeatureFiltered($event)"></p-multiSelect>
 </div>
+
 <p-dataTable [value]="this.benchmarkGroups" [rows]="50" [paginator]="true" paginatorPosition="both" [globalFilter]="gb" #dt>
+
   <p-column field="containerInfo.Name" header="IoC" sortField="containerInfo.Name" [filter]="true" filterMatchMode="in">
-    <ng-template pTemplate="filter" let-col>
+    <!-- <ng-template pTemplate="filter" let-col>
       <p-multiSelect [options]="this.iocFilters" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" defaultLabel="All"
         styleClass="ui-column-filter"></p-multiSelect>
-    </ng-template>
+    </ng-template> -->
     <ng-template pTemplate="body" let-ioc="rowData.containerInfo">
       <benchmark-ioc [container]="ioc"></benchmark-ioc>
     </ng-template>
@@ -55,12 +58,15 @@
       </p-column>
       <p-column header="Features" *ngIf="this.selectedFeatures.length>0" [colspan]="this.selectedFeatures.length*2"></p-column>
     </p-row>
+
     <p-row>
       <p-column *ngFor="let feature of this.selectedFeatures" [header]="feature.Name" colspan="2"></p-column>
     </p-row>
     <p-row>
-      <p-column *ngFor="let feature of this.selectedFeatures" header="Single Thread"></p-column>
-      <p-column *ngFor="let feature of this.selectedFeatures" header="Multi Thread"></p-column>
+      <ng-container *ngFor="let feature of this.selectedFeatures;let i=index">
+        <p-column header="Single Thread" [field]="i+'.Single'" sortable="custom" (sortFunction)="dtOnSort($event,dt)"></p-column>
+        <p-column header="Multi Thread" [field]="i+'.Multi'" sortable="custom" (sortFunction)="dtOnSort($event,dt)"></p-column>
+      </ng-container>
     </p-row>
 
   </p-headerColumnGroup>
@@ -84,20 +90,24 @@
   </p-column> -->
   <!-- <benchmark-item [benchmark]="rowData.Benchmarks"></benchmark-item> -->
   <ng-container *ngFor="let feature of this.selectedFeatures; let i=index;">
-    <p-column field="benchmarks[i].singleThreadedResult.Time" header="Single" sortable="true">
+
+    <p-column field="benchmarks[i].singleThreadedResult.Time">
       <ng-template pTemplate="body" let-bench="rowData">
         <benchmark-measurement [measurement]="bench.benchmarks[i].singleThreadedResult" [maxTime]="bench.benchmarks[i].maxTimeInSingleThread"></benchmark-measurement>
       </ng-template>
     </p-column>
-    <p-column field="benchmarks[i].multiThreadedResult.Time" header="Multi" sortable="true">
+
+    <p-column field="benchmarks[i].multiThreadedResult.Time">
       <ng-template pTemplate="body" let-bench="rowData">
         <benchmark-measurement [measurement]="bench.benchmarks[i].multiThreadedResult" [maxTime]="bench.benchmarks[i].maxTimeInMultiThread"></benchmark-measurement>
       </ng-template>
     </p-column>
-  </ng-container>
-</p-dataTable>
 
-<!-- <p-dataTable [value]="this.testdata">
+  </ng-container>
+
+</p-dataTable>
+<!-- <button type="button" (click)="testOrder()">dsfds</button>
+<p-dataTable [value]="this.testdata">
   <p-column field="IOC" header="IoC"></p-column>
   <p-column header="Feature">
     <ng-template let-benches="rowData.benches">
