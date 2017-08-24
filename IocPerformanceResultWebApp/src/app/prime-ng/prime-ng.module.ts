@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { DataTableModule, SharedModule, MultiSelectModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, MultiSelectModule, TooltipModule } from 'primeng/primeng';
 
 @NgModule({
   exports: [
     DataTableModule,
     SharedModule,
-    MultiSelectModule
+    MultiSelectModule,
+    TooltipModule
   ]
 })
 export class PrimeNgModule { }

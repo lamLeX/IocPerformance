@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SyncFusionModule } from "../sync-fusion/sync-fusion.module";
 import { BenchmarksComponent } from "./benchmarks.component";
 import { BenchmarkService } from './benchmark.service';
 import { PrimeNgModule } from "../prime-ng/prime-ng.module";
@@ -11,7 +10,6 @@ import { MeasurementComponent } from './measurement/measurement.component';
 @NgModule({
   imports: [
     CommonModule,
-    SyncFusionModule,
     PrimeNgModule
   ],
   exports: [

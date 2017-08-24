@@ -1,14 +1,14 @@
 <ng-container *ngIf="measurement.Successful; then success else failed"></ng-container>
 
 <ng-template #success>
-  <span class="element__chart" [ngStyle]="{'width.%':percent}"></span>
-  <span>{{measurement.Time}}</span>
-
+  <div [pTooltip]="'Ranked ' +rank+translateToString(rank)+' for lowest value in this category'">
+    <span class="element__chart" [ngStyle]="{'width.%':percent}"></span>
+    <span>{{measurement.Time}}</span>
+  </div>
 </ng-template>
 
 <ng-template #failed>
   <ng-container *ngIf="measurement.ExtraPolated; then extpol else error"></ng-container>
-  <ng-template #extpol>{{measurement.Time}}*</ng-template>
-  <ng-template #error>Error:{{measurement.Error}}</ng-template>
-  <!-- Failed -->
+  <ng-template #extpol>{{measurement.Time}} <i pTooltip="This value is extrapolated" class="fa fa-asterisk"></i></ng-template>
+  <ng-template #error><i class="fa fa-exclamation-circle" [pTooltip]="'Error:'+measurement.Error"></i></ng-template>
 </ng-template>

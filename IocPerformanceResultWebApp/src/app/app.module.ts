@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BenchmarksModule } from "./benchmarks/benchmarks.module";
-import { MaterialDesignModule } from "./material-design/material-design.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { MaterialDesignModule } from "./material-design/material-design.module";
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialDesignModule,
     BenchmarksModule,
   ],
   providers: [],
